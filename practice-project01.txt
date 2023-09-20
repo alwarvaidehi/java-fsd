@@ -1,0 +1,153 @@
+1
+# git init
+
+git configurations:
+
+git config --global user.name alwar vaidehi
+
+
+git config --global user.email alwarvaidehi.20@gmail.com
+
+===============================================================================================================================================
+2
+# sudo su -
+
+to Create a working directory[folder]
+
+1. # mkdir myproject
+
+# cd myproject
+
+# touch file1.java file2.java
+empty is created 
+
+Create a local repo
+========================================================
+
+# git init
+
+git configurations:
+
+git config --global user.name alwar vaidehi
+
+
+git config --global user.email alwarvaidehi.20@gmail.com
+
+
+========================================
+2 crud operation(Adding a  creating file to Local repo)
+=====================================
+
+# git add . // add all the files
+
+# git status
+
+# git commit -m "added file file1 and file2"
+
+==============================================
+Take an existing file which is tracked by GIT and do some modifications.
+Commit the changes to git
+====================================================
+
+Make changes in the file--> add some content in the file
+
+Edit the file
+
+# nano file1.java
+
+Insert data 
+
+To save and exit
+
+Press CTL x
+
+press y + press enter 
+
+Now check git status:
+
+# git status
+
+ 
+
+Deleting existing file from Local repo and working directory
+===================================================
+
+# git ls-files
+
+Choose a filename to be deleted
+
+# git rm <filename>
+
+git rm file1.java
+
+File will be removed from LR and WD
+
+# git ls-files   // file will not be LR
+
+# ls                // file will not be in WD
+
+Commit the deletion of file:
+
+# git commit -m "deletion of file"
+
+# git log --oneline
+
+=======================================================================
+3
+in git
+
+# cd
+
+# ssh-keygen
+
+keep pressing enter for 3 times
+
+You key will generated
+
+The public key can be exeucting below commad:
+
+# cat /root/.ssh/id_rsa.pub
+
+Copy the key carefully
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDWyk5pyD6j49ajNQTj5EBX2y9voUuAogTHq4BSmwyvDqjkK0+7Em/JKuesDaemhtKMZ0EPdkI5IapuqF2X3O/ro71KTO0gHVkJ6I16u06/catdwzyS4v7oI9rPTCqZSxkAZ0oeZjPNhdUXIIbZ6rnTDVuotmbO3ETNTBTy32YaNWUOHmJ1Io3qy6U/1w2e6Oo4ANBo9iwujzDutIzedjjX++r1H40NchpSSpDT7SOxljI5wGOkenclOBy9LW07y6vq9tW6788r3Qw+ZVQBOhUb8F8rb0HpLqYQ6lfufrG9KzL4DSKoCeUZTyLNdyVBso/QkSqJ6rUwRRjyLmWmr5J0NTrN1JMvv5p1P6EvMeA0XQ7ErcMlwUHoOeUXSswLNAFK+3dN5i4A40kTi3UJkYc/W/S4MOhSK76wk/6G6neiEpwwyjwNgA12goHCNDuEXpUUc0oAmgnyfo8ZKQpEywSZ1ISkegNJM6G82yfcTrQ4e+zdb0VHRFNgRdzpzqTC7zU= Vanak@LAPTOP-DK38VD03
+
+create a account in git hub with name and password and email
+
+in setting go to ssh key
+
+ paste it on git hub
+
+ Create a remote repository
+
+press + button in git hub to create a repository 
+
+give a name to the repository 
+
+select public
+
+press finish 
+
+in git 
+
+cd myproject
+ 
+git remote add origin git@github.com:alwarvaidehi/java-fsd.git
+
+
+git remote -v
+
+git push origin master
+
+
+give yes
+
+git status
+
+
+
+
+
+
+
+
