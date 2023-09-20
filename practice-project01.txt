@@ -1,7 +1,7 @@
-1
+1  set up and create a git repository
 # git init
 
-git configurations:
+git config:
 
 git config --global user.name alwar vaidehi
 
@@ -9,7 +9,7 @@ git config --global user.name alwar vaidehi
 git config --global user.email alwarvaidehi.20@gmail.com
 
 ===============================================================================================================================================
-2
+2  crud operation
 # sudo su -
 
 to Create a working directory[folder]
@@ -35,7 +35,7 @@ git config --global user.email alwarvaidehi.20@gmail.com
 
 
 ========================================
-2 crud operation(Adding a  creating file to Local repo)
+crud operation(Adding a  creating file to Local repo)
 =====================================
 
 # git add . // add all the files
@@ -78,7 +78,7 @@ Choose a filename to be deleted
 
 # git rm <filename>
 
-git rm file1.java
+git rm file2.java
 
 File will be removed from LR and WD
 
@@ -93,7 +93,7 @@ Commit the deletion of file:
 # git log --oneline
 
 =======================================================================
-3
+3. set up and configure github account 
 in git
 
 # cd
