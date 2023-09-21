@@ -1,0 +1,583 @@
+==============================================================================
+ 1.write a program in java to perform implicit and explicit type casting 
+
+package javaprogram;
+
+public class ImplicitTypeCasting {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int myInt =10;
+		double myDouble =myInt;
+		System.out.println("Int value:" +myInt);
+		System.out.println("Double value:" +myDouble);
+
+	}
+
+}
+1 b)package javaprogram;
+
+//////////1 phase 1 project
+
+public class ExplicitTypeCasting {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		double myDouble =10.5;
+		int myInt =(int) myDouble;
+		System.out.println("Double value:"+myDouble);
+		System.out.println("Int value:"+myInt);
+		
+
+	}
+
+}
+================================================================
+3) write a program to demostrate the while loop
+package javaprogram;
+
+public class Whileloop {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+       int i=1;
+       while(i<=20)
+       {
+    	   System.out.println(i);
+    	   i++;
+       }
+       System.out.println("printed number are above");
+	}
+
+}
+========================================================================
+4)write a program to demonstrate the do while loop
+
+package javaprogram;
+
+public class DoWhileLoop {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int i =1;
+		do
+		{
+		System.out.println("today is the wednesday");
+         i++;
+	}while (i<=8);
+		System.out.println("out of loop");
+
+}
+}
+==============================================================
+5)write a program to demonstrate the for loop
+
+package javaprogram;
+
+public class ForLoop {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println("print the value :" + i);
+			
+		}
+	System.out.println("out of the loop");
+	}
+
+}
+==========================================================
+2.write a program in java to verify the working of access modifiers
+
+package java program;
+
+public class AccessModifierDemo {
+	
+	//A class with different access modifier
+
+	    // Public field - accessible from anywhere
+	    public int publicVar = 10;
+
+	    // Private field - accessible only within this class
+	    private int privateVar = 20;
+
+	    // Protected field - accessible within the same package and subclasses
+	    protected int protectedVar = 30;
+
+	    // Default (package-private) field - accessible within the same package
+	    int defaultVar = 40;
+
+	    // Public constructor
+	    public AccessModifierDemo() {
+	        System.out.println("Public constructor called");
+	    }
+
+	    // Private method - accessible only within this class
+	    private void privateMethod() {
+	        System.out.println("Private method called");
+	    }
+
+	    // Protected method - accessible within the same package and subclasses
+	    protected void protectedMethod() {
+	        System.out.println("Protected method called");
+	    }
+
+	    // Public method - accessible from anywhere
+	    public void publicMethod() {
+	        System.out.println("Public method called");
+	    }
+
+	    // Default (package-private) method - accessible within the same package
+	    void defaultMethod() {
+	        System.out.println("Default method called");
+	    }
+
+	    public static void main(String[] args) {
+	        AccessModifierDemo obj = new AccessModifierDemo();
+
+	        // Accessing fields and methods from within the same class
+	        System.out.println("Public variable: " + obj.publicVar);
+	        System.out.println("Private variable: " + obj.privateVar);
+	        System.out.println("Protected variable: " + obj.protectedVar);
+	        System.out.println("Default variable: " + obj.defaultVar);
+	       obj.publicMethod();
+	       obj.privateMethod();
+	       obj.protectedMethod();
+	       obj.defaultMethod();
+
+	    
+	 }
+}
+===========================================================================
+6.demonstarte the classes,object and constructors
+
+package inheritanceDemo;
+
+public class MethodReturnValue {
+
+	// Global variable : variables which are declared at class level.
+	// these variables can be be used in any method of the class
+
+	int x = 100;
+	String str3 = "Java";
+
+	public int sum()
+	{
+		// local variables : variables within a method
+		// the scope of variables is only within this method
+		// these variables cannot be used outside the methods
+		int a =10;
+		int b=20;
+		int result = a+b+x;
+		return result;   // returning integer value hence data type is int
+
+	}
+
+	public String concatmethod()
+	{
+		String str1 = "selenium";
+		String str2 = "training";
+		String result = str1+str2+str3;
+		return result;
+	}
+
+	public void printmethod()
+	{
+		System.out.println("The global integer variable : " + x);
+		System.out.println("The global String variable : " + str3);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		MethodReturnValue obj = new MethodReturnValue();
+
+		System.out.println(obj.concatmethod());
+		int value = obj.sum();
+
+		System.out.println(value);
+
+
+		obj.printmethod();
+
+
+
+	}
+}
+===========================================================================
+
+7.writing a program in java to verify implementation of collection
+
+package collectionsDemo;
+
+public class ArrayDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// We can a variable storing single value
+
+		String s1 = "vaule1";
+
+		int i1 = 10;
+
+		// Arrays -> will store multiple values
+		// An array can store fixed number of values
+		// it has a fixed size
+		// In an array you can multiple values of same datatype
+		// no new values can be added to the array at runtime
+		// 
+
+		// Syntax
+
+		int [] arr1 = {10,20,30,40,50};
+
+		int len = arr1.length;
+
+		for(int i =0; i<len;i++)
+		{
+		System.out.println(arr1[i]);
+
+		}
+
+	}
+
+}
+=========================================================================
+8.writing a program to perform try catch block 
+package javaprogram;
+
+///////phase1 project 8
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class TryCatchExample {
+    public static void main(String[] args) {
+        try {
+            // Attempt to read a file that may not exist
+            BufferedReader reader = new BufferedReader(new FileReader("nonexistent.txt"));
+            String line = reader.readLine();
+            System.out.println("First line of the file: " + line);
+            reader.close();
+        } catch (IOException e) {
+            // Catch and handle the IOException
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+		
+
+
+========================================================================
+9.writing a code for a throw and throws keyword
+
+class MyCustomException extends Exception {
+		    public MyCustomException(String message) {
+		        super(message);
+		    }
+		}
+
+		public class ThrowKeywordDemo {
+
+		    // Method that throws a custom exception
+		    public static void myMethod() throws MyCustomException {
+		        // Simulate an exceptional situation
+		        int someCondition = 42;
+		        if (someCondition == 42) {
+		            // Throw a custom exception
+		            throw new MyCustomException("Custom exception occurred!");
+		        }
+		    }
+
+		    public static void main(String[] args) {
+		        try {
+		            // Call the method that may throw an exception
+		            myMethod();
+		        } catch (MyCustomException e) {
+		            // Catch and handle the custom exception
+		            System.out.println("Caught custom exception: " + e.getMessage());
+
+
+	}
+
+		    }
+		}
+
+
+
+===========================================================================
+writing code for a try block with parameters
+
+package javaprogram;
+
+public class TryBlockWithParameters {
+    public static void main(String[] args) {
+        try {
+            int result = divide(10, 2);
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+
+    public static int divide(int dividend, int divisor) {
+        if (divisor == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
+        return dividend / divisor ;
+    }
+}
+
+
+
+
+=========================================================================
+11.writing a program for multiple catch blocks
+
+package javaprogram;
+
+public class MultipleCatchBlocksExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stud
+		        try {
+		            // Some code that may throw exceptions
+		            int[] numbers = {1, 2, 3};
+		            int result = numbers[5] / 0; // This will throw an ArithmeticException
+		        } catch (ArithmeticException e) {
+		            // Handle arithmetic exceptions
+		            System.out.println("ArithmeticException caught: " + e.getMessage());
+		        } catch (ArrayIndexOutOfBoundsException e) {
+		            // Handle array index out of bounds exceptions
+		            System.out.println("ArrayIndexOutOfBoundsException caught: " + e.getMessage());
+		        } catch (Exception e) {
+		            // Handle any other exceptions
+		            System.out.println("Exception caught: " + e.getMessage());
+		        } finally {
+		            // Optional: Code to be executed regardless of whether an exception occurred or not
+		            System.out.println("Finally block executed.");
+		        }
+		    }
+		
+
+	
+
+}
+
+
+========================================================================
+12.writing code for finally {}block
+
+package javaprogram;
+
+public class FinallyBlockExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stud
+		        try {
+		            // Some code that may throw exceptions
+		            int result = 10 / 2; // This will not throw an exception
+		            System.out.println("Result: " + result);
+		        } catch (ArithmeticException e) {
+		            // Handle arithmetic exceptions
+		            System.out.println("ArithmeticException caught: " + e.getMessage());
+		        } finally {
+		            // This block will always be executed
+		            System.out.println("Finally block executed.");
+		        }
+		    }
+		}
+
+
+
+=====================================================================
+7.demonistrate types of inheritances
+
+package inheritanceDemo;
+
+public class MethodDemo1 {
+
+	public  void login()
+	{
+		System.out.println("enter user name");
+		System.out.println("enter the password");
+		System.out.println("login");
+	}
+	public void email()
+	{
+		System.out.println("enter the email:");
+		
+
+	}
+	public void logout()
+	{
+		System.out.println("click logout buttton");
+	}
+	public static void main(String[]args)
+	{
+		MethodDemo1 obj =new MethodDemo1();
+	    obj.login();
+		obj.email();
+		obj.logout();
+	}
+}
+
+===============================
+
+package inheritanceDemo;
+
+public class MethodReturnValue {
+
+	// Global variable : variables which are declared at class level.
+	// these variables can be be used in any method of the class
+
+	int x = 100;
+	String str3 = "Java";
+
+	public int sum()
+	{
+		// local variables : variables within a method
+		// the scope of variables is only within this method
+		// these variables cannot be used outside the methods
+		int a =10;
+		int b=20;
+		int result = a+b+x;
+		return result;   // returning integer value hence data type is int
+
+	}
+
+	public String concatmethod()
+	{
+		String str1 = "selenium";
+		String str2 = "training";
+		String result = str1+str2+str3;
+		return result;
+	}
+
+	public void printmethod()
+	{
+		System.out.println("The global integer variable : " + x);
+		System.out.println("The global String variable : " + str3);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		MethodReturnValue obj = new MethodReturnValue();
+
+		System.out.println(obj.concatmethod());
+		int value = obj.sum();
+
+		System.out.println(value);
+
+
+		obj.printmethod();
+
+
+
+	}
+
+}
+
+================================
+
+package inheritanceDemo;
+
+public class ParameterDemo {
+
+	public  void login(String username,String password)
+	{
+		System.out.println("enter user name :" +username);
+		System.out.println("enter the password :" +password);
+		System.out.println("login");
+	}
+	public void email(String text)
+	{
+		System.out.println("enter the email  :" +text);
+		
+
+	}
+	public void logout()
+	{
+		System.out.println("click logout buttton");
+	}
+	public static void main(String[]args)
+	{
+		ParameterDemo obj =new ParameterDemo();
+	    obj.login("vaidehi"," harry");
+	    obj.email("vaidehi.com");
+	    obj.logout();
+	    }
+}
+
+================================
+
+package inheritanceDemo;
+
+public class Base {
+	
+
+	public void openbrowser(String browser) {
+
+		System.out.println("Open the browser" + browser);
+	}
+
+	// Static: this method can be called without an Object in any class
+	public static void login(String username,String password)
+	{
+		System.out.println("Enter Username: " + username);
+		System.out.println("Enter Password: " + password);
+		System.out.println("Sign into mailbox");
+	}
+
+	public void logut()
+	{
+		System.out.println("Click on logout button");
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+=======
+
+package inheritanceDemo;
+
+public class HomePage extends Base {
+	
+	// This is going to be child class
+	
+		public void Homepagetest()
+		{
+			System.out.println("Test for Home Page");
+		}
+
+
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+
+			// Create object of child class
+
+			HomePage obj = new HomePage();
+
+			obj.openbrowser("Chrome");
+			login("admin", "admin");
+			obj.Homepagetest();
+			obj.logut();
+
+
+		}
+
+	}
+	
+
+	
+
+
