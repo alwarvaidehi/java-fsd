@@ -213,39 +213,89 @@ public class MethodReturnValue {
 
 package collectionsDemo;
 
-public class ArrayDemo {
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class HashMapDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		HashMap<String, Integer> td = new HashMap<>();
+		
+		td.put("vaidehi", 12345);  
+		td.put("vanac", 35345);
+		td.put("John", 5345);
+		td.put("chithra", 5345);
+		td.put("James", 34535);
+		
+		Set set = td.entrySet();
+		
+		
+		
+		Iterator itr = set.iterator();
+		while(itr.hasNext())
+		{
+		System.out.println(itr.next());
+		}
+		
+		// remove methods
+		
+		td.remove("chithra"); // Remves the key marc and its value
+	}}
+		
+		=========================================
+package collectionsDemo;
+
+
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class HashSetDemo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		// We can a variable storing single value
-
-		String s1 = "vaule1";
-
-		int i1 = 10;
-
-		// Arrays -> will store multiple values
-		// An array can store fixed number of values
-		// it has a fixed size
-		// In an array you can multiple values of same datatype
-		// no new values can be added to the array at runtime
-		// 
-
-		// Syntax
-
-		int [] arr1 = {10,20,30,40,50};
-
-		int len = arr1.length;
-
-		for(int i =0; i<len;i++)
+		
+	
+	HashSet<String> cities = new HashSet<>();
+		
+		cities.add("tamil nadu");
+		cities.add("kerala");
+		cities.add("New York");
+		cities.add("New Delhi");
+		cities.add("Moscow");
+		cities.add("Mumbai");
+		
+		// print the items in the list
+		for (String t: cities)
 		{
-		System.out.println(arr1[i]);
-
+			System.out.println(t);
 		}
 
+		
+		System.out.println(cities.size());
+		
+	
+		
+		System.out.println(cities.contains("Hyderabad")); 
+		
+		Iterator itr = cities.iterator();
+		
+		while(itr.hasNext())
+		{
+			System.out.println(itr.next());
+		}
+		
 	}
 
 }
+
 =========================================================================
 8.writing a program to perform try catch block 
 package javaprogram;
@@ -276,126 +326,181 @@ public class TryCatchExample {
 ========================================================================
 9.writing a code for a throw and throws keyword
 
-class MyCustomException extends Exception {
-		    public MyCustomException(String message) {
-		        super(message);
-		    }
+package exceptionsPrograms;
+
+public class ThrowDemo {
+	
+	
+	public void div(int a , int b)
+	{
+		if (b==0)
+		{
+			throw new ArithmeticException();
 		}
-
-		public class ThrowKeywordDemo {
-
-		    // Method that throws a custom exception
-		    public static void myMethod() throws MyCustomException {
-		        // Simulate an exceptional situation
-		        int someCondition = 42;
-		        if (someCondition == 42) {
-		            // Throw a custom exception
-		            throw new MyCustomException("Custom exception occurred!");
-		        }
-		    }
-
-		    public static void main(String[] args) {
-		        try {
-		            // Call the method that may throw an exception
-		            myMethod();
-		        } catch (MyCustomException e) {
-		            // Catch and handle the custom exception
-		            System.out.println("Caught custom exception: " + e.getMessage());
-
-
+		else
+		{
+			int c = a/b;
+			System.out.println(c);
+			
+		}
 	}
 
-		    }
-		}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
+		ThrowDemo t = new ThrowDemo();
+		t.div(20, 0);  // it will throw an exception as division by 0 .
+		
+	}
+
+}
+===========================================================
+package exceptionsPrograms;
+
+public class ThrowsDemo {
+	
+	public void div(int a , int b) throws ArithmeticException
+	{
+		if (b==0)
+		{
+			throw new ArithmeticException();
+		}
+		else
+		{
+			int c = a/b;
+			System.out.println(c);
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		ThrowsDemo t = new ThrowsDemo();
+		
+		try {
+			t.div(10, 0);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Do not give b value as 0");
+		}
+		
+		System.out.println("Execute the code1");
+		System.out.println("Execute the code1");
+	}
+
+}
 
 
 ===========================================================================
 writing code for a try block with parameters
 
-package javaprogram;
+package exceptionsPrograms;
 
-public class TryBlockWithParameters {
-    public static void main(String[] args) {
-        try {
-            int result = divide(10, 2);
-            System.out.println("Result: " + result);
-        } catch (ArithmeticException e) {
-            System.out.println("An error occurred: " + e.getMessage());
-        }
-    }
-
-    public static int divide(int dividend, int divisor) {
-        if (divisor == 0) {
-            throw new ArithmeticException("Division by zero is not allowed.");
-        }
-        return dividend / divisor ;
-    }
-}
-
-
-
-
-=========================================================================
-11.writing a program for multiple catch blocks
-
-package javaprogram;
-
-public class MultipleCatchBlocksExample {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stud
-		        try {
-		            // Some code that may throw exceptions
-		            int[] numbers = {1, 2, 3};
-		            int result = numbers[5] / 0; // This will throw an ArithmeticException
-		        } catch (ArithmeticException e) {
-		            // Handle arithmetic exceptions
-		            System.out.println("ArithmeticException caught: " + e.getMessage());
-		        } catch (ArrayIndexOutOfBoundsException e) {
-		            // Handle array index out of bounds exceptions
-		            System.out.println("ArrayIndexOutOfBoundsException caught: " + e.getMessage());
-		        } catch (Exception e) {
-		            // Handle any other exceptions
-		            System.out.println("Exception caught: " + e.getMessage());
-		        } finally {
-		            // Optional: Code to be executed regardless of whether an exception occurred or not
-		            System.out.println("Finally block executed.");
-		        }
-		    }
-		
+public class Exceptionsdemo1 {
 
 	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			int i = 9/0;
+			System.out.println(i);
+		}
+		catch(ArithmeticException e) {
+		
+		System.out.println(e);
+			
+		System.out.println("you cannot divide by zero");
+			// Different ways to print exception message:
+			e.printStackTrace(); // will print exception, description and message and line number(stacktrace)
+			System.out.println(e.toString()); // will print exception and description, - no stack trace
+		System.out.println(e.getMessage()); // will print only message.
+		
+		}
+		
+		finally {
+			System.out.println("I am in finally Block");
+		}
+		}	
+		}	
+		
 
+=================================================
+
+11.writing a program for multiple catch blocks
+
+package exceptionsPrograms;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class MultipleCatch {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+  
+		Scanner scan = new Scanner(System.in);
+		
+		try {
+			System.out.println("Enter a number");
+			int num1 = scan.nextInt();
+			System.out.println("Enter another number");
+			int num2 = scan.nextInt();
+			
+			int result = num1/num2;
+			
+			System.out.println("The division of 2 numbers is : " + result);
+		}
+		catch(ArithmeticException e) {
+			System.out.println("Please do not enter a zero in denominator");
+		}
+		catch(InputMismatchException e) {
+			System.out.println("Only Integer values are allowed");
+		}
+		catch(Exception e) {
+			System.out.println("Please enter a valid input");
+		}
+	}
 }
+
+ 
 
 
 ========================================================================
 12.writing code for finally {}block
 
-package javaprogram;
+package exceptionsPrograms;
 
-public class FinallyBlockExample {
+public class Exceptionsdemo1 {
 
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stud
-		        try {
-		            // Some code that may throw exceptions
-		            int result = 10 / 2; // This will not throw an exception
-		            System.out.println("Result: " + result);
-		        } catch (ArithmeticException e) {
-		            // Handle arithmetic exceptions
-		            System.out.println("ArithmeticException caught: " + e.getMessage());
-		        } finally {
-		            // This block will always be executed
-		            System.out.println("Finally block executed.");
-		        }
-		    }
+		// TODO Auto-generated method stub
+		try {
+			int i = 9/0;
+			System.out.println(i);
 		}
+		catch(ArithmeticException e) {
+		
+		System.out.println(e);
+			
+		System.out.println("you cannot divide by zero");
+			// Different ways to print exception message:
+			e.printStackTrace(); // will print exception, description and message and line number(stacktrace)
+			System.out.println(e.toString()); // will print exception and description, - no stack trace
+		System.out.println(e.getMessage()); // will print only message.
+		
+		}
+		
+		finally {
+			System.out.println("I am in finally Block");
+		}
+				
+}}
+============================================
 
 
-
-=====================================================================
 7.demonistrate types of inheritances
 
 package inheritanceDemo;
