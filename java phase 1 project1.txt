@@ -300,25 +300,29 @@ public class HashSetDemo {
 8.writing a program to perform try catch block 
 package javaprogram;
 
-///////phase1 project 8
+///////phase1 project
+package ExceptionPractice;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+public class ExeceptionDemo1 {
 
-public class TryCatchExample {
-    public static void main(String[] args) {
-        try {
-            // Attempt to read a file that may not exist
-            BufferedReader reader = new BufferedReader(new FileReader("nonexistent.txt"));
-            String line = reader.readLine();
-            System.out.println("First line of the file: " + line);
-            reader.close();
-        } catch (IOException e) {
-            // Catch and handle the IOException
-            System.out.println("An error occurred while reading the file: " + e.getMessage());
-        }
-    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int i = 9;
+		int j = 0;
+		try {
+			System.out.println("result" + i/j);
+		}
+		catch(ArithmeticException e) {
+			System.err.println(e.getMessage());
+			System.out.println("please dont give o as value of j");
+		}
+           System.out.println("result for addition " + i+j);
+           System.out.println("result of multiplication " + i*j);
+           System.out.println("result of substraction" +(i-j));
+           
+	}
+
 }
 		
 
@@ -429,75 +433,74 @@ public class Exceptionsdemo1 {
 =================================================
 
 11.writing a program for multiple catch blocks
-
-package exceptionsPrograms;
+package ExceptionPractice;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MultipleCatch {
+public class MultipleCatchBlock {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-  
-		Scanner scan = new Scanner(System.in);
-		
+		Scanner scan = new Scanner (System.in);
 		try {
-			System.out.println("Enter a number");
-			int num1 = scan.nextInt();
-			System.out.println("Enter another number");
+			System.out.println("enter a number");
+			int num1=scan.nextInt();
+			System.out.println("enter another number");
 			int num2 = scan.nextInt();
-			
-			int result = num1/num2;
-			
-			System.out.println("The division of 2 numbers is : " + result);
+			int result =num1/num2;
+			System.out.println("the division of 2 number is :" +result);
 		}
-		catch(ArithmeticException e) {
-			System.out.println("Please do not enter a zero in denominator");
-		}
-		catch(InputMismatchException e) {
-			System.out.println("Only Integer values are allowed");
+		catch(ArithmeticException e)
+		{
+			System.out.println("please do not enter 0 in denominator");
+			
+		}catch(InputMismatchException e) {
+			System.out.println("please enter only integer values");
 		}
 		catch(Exception e) {
-			System.out.println("Please enter a valid input");
+			System.out.println("please enter vaild input");
+			
 		}
+
 	}
+
 }
+
 
  
 
 
 ========================================================================
 12.writing code for finally {}block
+package ExceptionPractice;
 
-package exceptionsPrograms;
+public class FinallyDemo {
 
-public class Exceptionsdemo1 {
-
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		int i =9;
+		int j =0;
 		try {
-			int i = 9/0;
-			System.out.println(i);
-		}
-		catch(ArithmeticException e) {
-		
-		System.out.println(e);
-			
-		System.out.println("you cannot divide by zero");
-			// Different ways to print exception message:
-			e.printStackTrace(); // will print exception, description and message and line number(stacktrace)
-			System.out.println(e.toString()); // will print exception and description, - no stack trace
-		System.out.println(e.getMessage()); // will print only message.
-		
-		}
-		
-		finally {
-			System.out.println("I am in finally Block");
+		System.out.println("result " +i/j);
+	}
+	catch(Exception e) {
+		e.printStackTrace();
+	
+	}
+		finally
+		{
+			System.out.println("result for addition"+ i+j);
+			System.out.println("result for multiplication "+ i*j);
+			System.out.println("result for substartction " + (i-j));
 		}
 				
-}}
+
+	}}
+
+
+
 ============================================
 
 
