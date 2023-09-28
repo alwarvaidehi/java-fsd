@@ -1,0 +1,69 @@
+                                  XPATH LOCATOR DEMO
+package seleniumDemo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CalenderXpathDemo {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+     WebDriver driver=new ChromeDriver();
+     driver.manage().window().maximize();
+     driver.manage().deleteAllCookies();
+	driver.get("http://seleniumpractise.blogspot.com/2016/08/how-to-handle-calendar-in-selenium.html");
+    driver.findElement(By.xpath("//input[contains(@id,'picker')]")).click();
+    Thread.sleep(1500);
+    String monthyear=driver.findElement(By.xpath("//div[@class='ui-datepicker-title']")).getText();
+    System.out.println(monthyear);
+    String my[]=monthyear.split(" ");
+    String month=my[0];
+    String year=my[1];
+    while(!(month.equals("may")&&year.equals("2024")));
+    driver.findElement(By.xpath("//span[text()='Next']")).click();
+	monthyear = driver.findElement(By.xpath("//div[@class='ui-datepicker-title']")).getText();
+	month=monthyear.split(" ")[0];
+	year=monthyear.split(" ")[1];
+	driver.findElement(By.xpath("//a[text()='14']")).click();
+	
+	}
+  
+	}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                  CSS LOCATOR DEMO
+  package seleniumDemo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CssLocatorDemo {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("https://www.facebook.com/");
+		driver.findElement(By.cssSelector("input#email")).sendKeys("vaidehi");
+		driver.findElement(By.cssSelector("input[name='pass']")).sendKeys("Harrystyles.01");
+		driver.navigate().to("https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Wikipedia%3ASign+up");
+         Thread.sleep(1500);
+         
+         driver.findElement(By.linkText("Log in")).click();
+         
+         
+         
+       String innertext =  driver.findElement(By.cssSelector("#userloginForm > form > div > div.mw-htmlform-"
+       		+ "field-HTMLTextField.loginText.mw-userlogin-username.mw-ui-vform-field > label")).getText();
+         
+         System.out.println(innertext);
+         
+         
+
+	}
+
+}
+
+
