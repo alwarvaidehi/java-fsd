@@ -1,0 +1,147 @@
+package com.app.TestNg.Extentreports;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+public class BaseTest {
+	public static WebDriver driver;
+	public static ExtentReports extentReports;
+	public static ExtentTest extentTest;
+	@BeforeTest
+	public void OpenBrowser(ITestContext context)
+	{
+		 driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		extentTest=extentReports.createTest(context.getName());
+	}
+	@AfterTest
+   public void closeBrowser()
+   {
+	   driver.quit();
+	   
+   }
+	@BeforeSuite
+	public void IntializeExtentReport()
+	{
+		
+		ExtentSparkReporter sparkReport=new ExtentSparkReporter("Report3.html");
+		extentReports=new ExtentReports();
+		extentReports.attachReporter(sparkReport);
+		extentReports.setSystemInfo("OS",System.getProperty("os.name"));
+		extentReports.setSystemInfo("JAVA",System.getProperty("java.version"));
+		
+	}
+	@AfterSuite
+	public void generateReports() throws IOException
+	{
+		extentReports.flush();
+	   Desktop.getDesktop().browse(new File("Report3.html").toURI());
+	   
+	}
+	@AfterMethod
+	public void generateTestStatus(Method m,ITestResult result)
+	{
+		if(result.getStatus() == ITestResult.FAILURE )
+		{
+			System.out.println("Capture Screenshot");
+			extentTest.fail(result.getThrowable());
+		}
+		else if (result.getStatus() == ITestResult.SUCCESS) {
+			extentTest.pass(m.getName() + " is passed");
+		}
+	}
+	
+	
+}
+	
+
+**********************
+package com.app.TestNg.Extentreports;
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
+
+public class TestClass extends BaseTest {
+    @Test(testName="testWiki")
+	
+    	public void method1() throws InterruptedException
+    	{
+           driver.get("https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Wikipedia%3ASign+up");
+    		
+    		Thread.sleep(1000);
+    		
+    		String Expectedtitle = "Create account wiki";
+    		
+    		String actualtitle = driver.getTitle();
+    		
+    		Assert.assertEquals(actualtitle, Expectedtitle,"The title of the page is not valid");
+    		// Record the status of the test in the extent report
+    		extentTest.pass("Assertion is passed");
+    	}
+    	
+    	@Test(testName= "Testfacebook")
+    	public void method2()
+    	{
+           driver.get("https://www.facebook.com/");
+    		
+    		driver.findElement(By.cssSelector("input#email")).sendKeys("admin@gmail.com");
+    		extentTest.info("Entered valid URL");
+    	}
+    	
+    	@Test(testName= "Testrediff")
+    	public void method3()
+    	{
+    		driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+    		extentTest.info("Navigated to the URL");
+    	    driver.findElement(By.id("login1")).sendKeys("admin");
+    		driver.findElement(By.id("password")).sendKeys("admin");
+    	}
+
+	}
+
+***********************************************************
+<suite name="ExtentReports" verbose="1">
+<test name="testWiki">
+<classes>
+<class name="com.app.TestNg.Extentreports.TestClass"></class>
+<methods>
+    <include name="method1"></include> 
+  </methods>
+</classes>
+</test>
+<test name="Test facebookpage">
+<classes>
+<class name="com.app.TestNg.Extentreports.TestClass"></class>
+<methods>
+    <include name="method2"></include> 
+  </methods>
+</classes>
+</test>
+<test name="Test rediffPage">
+<classes>
+<class name="com.app.TestNg.Extentreports.TestClass"></class>
+<methods>
+    <include name="method3"></include> 
+  </methods>
+</classes>
+</test>
+</suite>

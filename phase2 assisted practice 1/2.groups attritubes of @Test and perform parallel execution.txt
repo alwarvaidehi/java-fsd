@@ -1,0 +1,181 @@
+package com.app.TestNGScripts;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class ParallelTest {
+	@Test
+	public void wikipage() throws InterruptedException
+	{
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Wikipedia%3ASign+up");
+		Thread.sleep(1500);
+		driver.close();
+		
+	}
+	@Test
+	public void wikipage2() throws InterruptedException
+	{
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Wikipedia%3ASign+up");
+		Thread.sleep(1500);
+		driver.close();
+		
+	}
+	@Test
+	public void ninjaPage() throws InterruptedException
+	{
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://tutorialsninja.com/demo/");
+		Thread.sleep(1500);
+		driver.close();
+		
+	}
+	@Test
+	public void ninjaPage2() throws InterruptedException
+	{
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://tutorialsninja.com/demo/");
+		Thread.sleep(1500);
+		driver.close();
+		
+	}
+	
+
+}
+*********************************************************************************
+<suite name="TestSuite" parallel="methods" thread-count="2">
+<test name="testcycle1">
+<classes>
+<class name="com.app.TestNGScripts.ParallelTest">
+<methods>
+<include name="wikipage"></include>
+<include name="wikipage2"></include>
+<include name="ninjaPage"></include>
+<include name="ninjaPage2"></include>
+</methods>
+</class>
+
+</classes>
+
+</test>
+
+</suite>
+*********************************************************************************************
+
+GROUPS DEMO
+
+package TestScenario1;
+
+import org.testng.annotations.Test;
+
+public class sample1 {
+@Test(priority='1',groups= {"smoke","functional","regression"})
+	public void openapp()
+	   {
+		   System.out.println("open the browser and open it");
+	   }
+@Test(priority='1',groups= {"functional"})
+
+	public void login()
+	   {
+		   System.out.println("login to the browser");
+	   }
+@Test(priority='1',groups= {"regression"})
+
+      public void loginwithinvaliddata()
+	   {
+		   System.out.println("login failed");
+	   }
+@Test(priority='1',groups= {"regression"})
+
+      public void loginwithwrongpassword()
+	   {
+		   System.out.println("wrong password");
+	   }
+	
+}
+******************************************************************************
+package TestScenario1;
+
+import org.testng.annotations.Test;
+
+public class Sample2 {
+	@Test(priority='1',groups= {"smoke","functional","regression"})
+	public void opentheAccountPage()
+	{
+		System.out.println("Open the browser and open Accountspage");
+	}
+	
+	@Test(priority='2',groups= {"functional"})
+	public void login()
+	{
+		System.out.println("login app");
+	}
+	@Test(priority='3',groups= {"functional"})
+	public void Accounts()
+	{
+		System.out.println("check the accountpage");
+	}
+	
+	@Test(priority='4',groups= {"functional","regression"})
+	public void createAccount()
+	{
+		System.out.println("create an account");
+	}
+	
+	@Test(priority='5',groups= {"smoke","regression","functional"})
+	
+	public void Logout()
+	{
+		System.out.println("Logout");
+	}
+}
+***************************************************************************************** 
+
+GROUP XML
+
+<suite name="LearningGroups">
+<test name="smokeTesting">
+<groups>
+<run>
+<include name="smoke"></include>
+</run>
+
+</groups>
+<classes>
+<class name="TestScenario1.sample1"></class>
+<class name="TestScenario1.Sample2"></class>
+</classes>
+</test>
+<test name="RegressionTesting">
+<groups>
+<run>
+<include name="regression"></include>
+</run>
+
+</groups>
+<classes>
+<class name="TestScenario1.sample1"></class>
+<class name="TestScenario1.Sample2"></class>
+</classes>
+</test>
+<test name="Alltesting">
+<groups>
+   <run>
+   <exclude name="smoke"></exclude>
+   </run>
+</groups>
+<classes>
+<class name="TestScenario1.sample1"></class>
+<class name="TestScenario1.Sample2"></class>
+</classes>
+</test>
+</suite>
+
+
