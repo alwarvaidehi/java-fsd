@@ -1,0 +1,66 @@
+package com.app.junitDemo;
+
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.suite.api.IncludeTags;
+
+@IncludeTags({"dev"})
+public class IncludeExcludeTags {
+	@Test
+	@Tag("dev")
+	public void development()
+	{
+		System.out.println("Test case of development1");      
+		
+	}
+	@Test
+	@Tag("dev")
+	public void development2()
+	{
+		System.out.println("Test case of development1");      
+		
+	}
+	@Test
+	@Tag("qa")
+	public void QA()
+	{
+		System.out.println("Test case of qa1");      
+		
+	}
+	@Test
+	@Tag("qa")
+	public void QA2()
+	{
+		System.out.println("Test case of qa2");      
+		
+	}
+	@Test
+	@Tag("ut")
+	public void unittest1()
+	{
+		System.out.println("ut1");      
+		
+	}
+	@Test
+	@Tag("ut")
+	public void unittest2()
+	{
+		System.out.println("ut1");      
+		
+	}
+}
+===========================================================
+package com.app.junitDemo;
+
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.platform.suite.api.IncludeTags;
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.runner.RunWith;
+
+@RunWith(JUnitPlatform.class)
+@SelectClasses({com.app.junitDemo.IncludeExcludeTags.class})
+@IncludeTags({"dev"})
+
+public class Runnerunit5IncludeExclude {
+
+}

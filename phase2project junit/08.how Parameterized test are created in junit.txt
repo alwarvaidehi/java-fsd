@@ -1,0 +1,119 @@
+package com.app.junitDemo;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+public class ParameterizedDemoCSVsource {
+	
+	// CSV => storing data in form of row and columns-> like an excel
+			
+	
+	@ParameterizedTest(name="CSV source{arguments}")
+	@CsvSource({
+			"chithra, 24",
+			"vaidehi,23",
+			"vanakrishnan,21"
+		})
+	
+
+	
+	public void datafrom_CSVsource(String name,String age)
+	{
+		System.out.println(name+ " : " +age);
+		
+		
+	}
+}
+
+*****************************************************************************************
+package com.app.junitDemo;
+
+import java.util.stream.Stream;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
+public class ParameterizedTestMethodSource {
+	@ParameterizedTest(name= "Method value{arguments})")
+	@MethodSource("weeks")
+	public void getdatafromMethods(String input)
+	{
+		System.out.println("the value from methods is : " +input);
+	}
+	public static Stream<String> weeks()
+	{
+		return Stream.of("monday","tuesday","Wednesday");
+	}
+
+}
+
+****************************************************************************************************
+package com.app.junitDemo;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.platform.commons.util.StringUtils;
+//@ValueSource : this annotation will store multiple input values of different datatypes
+	// String, integer, boolean
+	// @ValueSource is a provider of test data
+	// @Test annotation cannot pass parameter values of the method
+	// we will use @ParameterizedTest
+	// it needs a source of values -> ValueSource
+	// @ParameterizedTest will create a new test for every test data 
+	// every test will have a unique name
+
+public class ParameterizedDemoValueSource {
+    @ParameterizedTest
+	@ValueSource(strings = {"vaidehi","chithra","vana",""})  
+	public void checkblanks(String value)
+	{
+		Assertions.assertTrue(StringUtils.isBlank(value));// input is null or not
+		System.out.println(value);
+	}
+    
+    
+    
+    @ParameterizedTest(name= "{index}-Run the test with arguments ={0}")
+	@ValueSource(ints = {11,12,13,14,15})
+	public void valueSourceDemo(int args)
+	{
+		
+		System.out.println("the integer value is " +args);
+	}
+    
+    
+    @ParameterizedTest(name="arugumentCheckblanks{arguments}")
+   	@ValueSource(strings = {"vaidehi","chithra","vana",""})
+    @EmptySource
+    public void argumentCheckblanks(String value)
+    {
+    	Assertions.assertTrue(StringUtils.isBlank(value));// input is null or not
+    	System.out.println(value);
+    }
+    
+    
+    
+    
+    @ParameterizedTest(name="null source")
+   @NullSource
+   public void checkblank2(String value)
+   {
+    	Assertions.assertTrue(StringUtils.isBlank(value));// input is null or not
+    	System.out.println(value);
+   }
+    
+    
+    
+    
+    @ParameterizedTest(name="empty and null source")
+    @NullAndEmptySource
+    public void checkbank3(String value)
+    {
+    	Assertions.assertTrue(StringUtils.isBlank(value));// input is null or not
+    }
+        
+}

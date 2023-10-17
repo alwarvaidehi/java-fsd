@@ -1,0 +1,3 @@
+cd C:\Users\Vanak\eclipse-workspace\ATE-phase2-Junit
+
+javac- Cp C:\Users\Vanak\eclipse-workspace\ATE-phase2-Junit\src\test\java\com\app\junitDemo\TestAnnotation.java

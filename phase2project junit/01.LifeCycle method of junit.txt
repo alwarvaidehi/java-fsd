@@ -1,0 +1,134 @@
+package com.app.junitDemo;
+
+import org.junit.jupiter.api.Test;
+
+public class TestAnnotation {
+	@Test
+	public void Method()
+	{
+		System.out.println("Hello Junit");
+	}
+
+}
+======================================================================================================
+package com.app.junitDemo;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class BeforeAfterEachAnnotation {
+	JavaOperations obj;
+	@BeforeEach
+	public void init()
+	{
+		System.out.println("starting the database connection");
+		obj=new JavaOperations();
+		System.out.println("Initalizing the database");
+	}
+	@AfterEach
+	public void teardown()
+	{
+	  System.out.println("closing the database");
+	}
+	@Test
+	public void test1()
+	{
+		System.out.println("Executing the method1 .....of JavaOperations");
+	}
+	@Test
+	public void test2()
+	{
+		System.out.println("Executing the method2 .....of JavaOperations");
+	}
+
+}
+======================================================================================
+package com.app.junitDemo;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
+public class BeforeAfterAllAnnotation {
+	 JavaOperations obj;
+
+	@BeforeAll
+	public  void init()
+	{
+		System.out.println("starting the database connection");
+		obj=new JavaOperations();
+		System.out.println("Initalizing the database");
+	}
+	@AfterAll
+	public  void teardown()
+	{
+	  System.out.println("closing the database");
+	}
+	@Test
+	public void test1()
+	{
+		System.out.println("Executing the method1 .....of JavaOperations");
+	}
+	@Test
+	public void test2()
+	{
+		System.out.println("Executing the method2 .....of JavaOperations");
+	}
+
+
+}
+===============================================================================================
+package com.app.junitDemo;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
+public class DisplayNameOrderAnnotation {
+	@Order(4)
+	@DisplayName("4. SignIn button")
+	@Test
+	public void method1()
+	{
+		System.out.println("testing sign In button");
+	}
+	@Order(1)
+	@DisplayName("1. Unsername field")
+	@Test
+	public void method2()
+	{
+		System.out.println("testing username");
+	}
+	@Order(5)
+	@DisplayName("5. logout button")
+	@Test
+	public void method3()
+	{
+		System.out.println("testing logout button");
+	}
+	@Order(3)
+	@DisplayName("2. Password field")
+	@Test
+	public void method4()
+	
+	{
+		System.out.println("testing password field");
+	}
+	@Order(4)
+	@DisplayName("3. forget password field")
+	@Test
+	public void method5()
+	{
+		System.out.println("testing forget password  field");
+	}
+
+}
+

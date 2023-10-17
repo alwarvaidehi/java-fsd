@@ -1,0 +1,29 @@
+package com.app.junitDemo;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class AssertionsJunitDemo {
+	@Test
+	public void testAssertions()
+	{
+		String expected = new String("abc");
+		String actual =new String("abc");
+		int value1=25;
+		int value2=30;
+		String str3="junittesting";
+		String str4=null;
+		String a="vaidehi";
+		String b="vaidehi";
+		String [] array1= {"chithra","vaidehi","vana"};
+		String [] array2 = {"chithra","vaidehi","vana"};
+		Assertions.assertEquals(expected,actual);//it takes any data types and object
+		Assertions.assertTrue(value1<value2);
+		Assertions.assertNotNull(str3);
+		Assertions.assertNull(str4);
+		Assertions.assertSame(a,b); //it only take object
+		//Assertions.assertNotSame(expected, actual);
+		Assertions.assertArrayEquals(array1, array2);
+	}
+
+}

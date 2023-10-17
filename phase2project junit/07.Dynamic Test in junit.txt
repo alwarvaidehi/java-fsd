@@ -1,0 +1,103 @@
+package com.app.junitDemo;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.TestFactory;
+
+public class DynamicTests {
+	@TestFactory
+	public Collection<DynamicTest> dynamicTest()
+	{
+		return Arrays.asList(
+				DynamicTest.dynamicTest("simple test1",() -> Assertions.assertTrue(true)),
+				DynamicTest.dynamicTest("simple test2",() -> Assertions.assertTrue(true)),
+				DynamicTest.dynamicTest("simple test3",() -> Assertions.assertTrue(true)),
+				DynamicTest.dynamicTest("simple test1",() -> {throw new Exception("Exception dynamic Test");}));
+
+				
+		// Assisted practice - 5
+		//@Test annotation the tests are static in nature, that means we define them at compile time
+		// before execution the entire test is available in front of us
+		
+		// J unit brings to you a concept called as Dynamic tests, in which the tests will be genrated at runtime
+		// Advantage using this you are writing less code and you can write many dynamic tests at one go, 
+		// java will automatically create the test methods for you at run time
+		// A dynamic test is a test which is generated during runtime using an annotation @TestFactory
+		// Dynamic test cannot be private or static, they will be public
+		// @Test annotation will mostly not return anything
+		// @TestFactory annotation will return Single Dynamic Node, or a Stream,Collections, Arrays of Dynamic Nodes instance
+		// Iterator, iterable
+		// Otherwise it will throw an J unit exception
+		// DynamicNode ==> DynamicContainer + DynamicTest
+		// Interface of j Unit which is DynamicTest
+		// The Dynamic Test that you write will have 2 parts:
+		// 1. Display Name of the dynamic test
+		// 2. Executable -> piece of code that get executed as part of dynamic test, it cannot be null otherwise you will get error
+		// for dynamic tests we will not use any lifeCycle annotation
+				
+	}
+
+}
+============================================================================================================
+package com.app.junitDemo;
+
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.TestFactory;
+
+public class DynamicTest2 {
+	
+	@TestFactory
+	public Stream<DynamicTest>dynamicTestsforpalindrome()
+	{
+		return Stream.of("mom","dad","mam","madam").map(inputText ->
+		DynamicTest.dynamicTest(inputText, () ->Assertions.assertTrue(Myutils.isPalindrome(inputText)))
+				
+				);
+	}
+
+}
+========================================================================================
+package com.app.junitDemo;
+
+
+
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DynamicNode;
+import org.junit.jupiter.api.TestFactory;
+
+
+public class DynamicContainerDemo {
+     private List<String> createInputList()
+     {
+    	 return Arrays.asList("race","mom","dad","daughter");
+    	 
+     }
+     @TestFactory
+     public Stream<DynamicNode> dynamictestwithDynamicContainer()
+     {
+    	 return createInputList().stream().map(input ->
+    DynamicContainer.dynamicContainer("Container for" +input,Stream.of(
+    			dynamicTest("not null") ,()->Assertions.assertNotNull(input)),
+    DynamicContainer.dynamicContainer("properties for" +input,Stream.of(
+    			dynamicTest("length>0",()->Assertions.assertTrue(input.length()>0))),
+    			dynamicTest("not empty",()-> Assertions.assertFalse(input.isEmpty())))))
+    			;
+    			
+     }
+	
+	
+	}
+     
+}
+

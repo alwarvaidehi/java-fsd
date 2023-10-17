@@ -1,0 +1,6 @@
+download jacoco pluggins in jenkins
+ in job configuration
+in post -buildActions 
+clilck add post-build action
+In dropdown  list add REcord Jacoco coverage report
+click build Now

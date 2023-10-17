@@ -1,0 +1,66 @@
+package com.app.junitDemo;
+
+import java.time.temporal.ChronoUnit;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+public class ArgumentConvertionImplicit {
+	
+	// Junit will automatically convert the datatype of input source in to desired datatype by test method
+		// source = string
+		// implicit convert to TimeUnit
+	
+	@ParameterizedTest(name="Implicityconverstion")
+	@ValueSource(strings="SECONDS")// input data source as String
+	
+	public void testwithImplicitConversation(ChronoUnit chronounit)
+	{
+		
+		
+		// method expects a timeUnit not a string
+		
+		System.out.println(chronounit.name());
+		Assertions.assertNotNull(chronounit.name());
+	}
+
+}
+=============================================================================================================
+package com.app.junitDemo;
+
+import java.util.concurrent.TimeUnit;
+
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.converter.ConvertWith;
+import org.junit.jupiter.params.provider.EnumSource;
+
+public class ArgumentConverstionexplicitSourceExplicit {
+	@ParameterizedTest
+	@EnumSource(TimeUnit.class)
+	void testcaseExplicitArgumentConversion(
+			@ConvertWith(ToStringArgumentConveter.class)String argument)
+	{
+		Assertions.assertNotNull(TimeUnit.valueOf(argument));
+	}
+}
+===========================================================================
+package com.app.junitDemo;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.converter.ArgumentConversionException;
+import org.junit.jupiter.params.converter.SimpleArgumentConverter;
+
+public class ToStringArgumentConveter extends SimpleArgumentConverter{
+
+	@Override
+	protected Object convert(Object source, Class<?> targetType) throws ArgumentConversionException {
+		// TODO Auto-generated method stub
+		Assertions.assertEquals(String.class,targetType,"can only takes strings");
+		return String.valueOf(source);
+	}
+
+}
+
