@@ -9,3 +9,6 @@
 [ss selenium github.zip](https://github.com/alwarvaidehi/java-fsd/files/12765405/ss.selenium.github.zip)
 
 [phase2 ss.zip](https://github.com/alwarvaidehi/java-fsd/files/12881940/phase2.ss.zip)
+
+[junit screenshot.zip](https://github.com/alwarvaidehi/java-fsd/files/12927820/junit.screenshot.zip)
+
