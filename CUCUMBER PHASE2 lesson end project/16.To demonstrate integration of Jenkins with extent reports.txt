@@ -1,0 +1,5 @@
+in jenkins download pluggin in manage jenkins
+we have to download cucumber pluggin
+then we have to add that in build path
+then we have to run the project in the jenkins.
+then we can see the extention of cucumber in jekins.

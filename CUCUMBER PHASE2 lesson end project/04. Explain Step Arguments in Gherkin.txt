@@ -1,0 +1,13 @@
+Feature: Email page Test
+
+  Scenario: New File for docString demo
+  
+    When I reset my password on the mail
+    Then I should recieve an email with following content
+      """
+      Hello Vaidehi
+      Pls click on this to reset the password 
+      Thanks 
+      Admin Team
+      """
+====================================================================================
