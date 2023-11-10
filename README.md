@@ -16,4 +16,5 @@
 
 [jmeter phase3 assisted practice.zip](https://github.com/alwarvaidehi/java-fsd/files/13225624/jmeter.phase3.assisted.practice.zip)
 [phase3 postman lesson-2.zip](https://github.com/alwarvaidehi/java-fsd/files/13277979/phase3.postman.lesson-2.zip)
+[REST ASSURED  Phase3.zip](https://github.com/alwarvaidehi/java-fsd/files/13317995/REST.ASSURED.Phase3.zip)
 
